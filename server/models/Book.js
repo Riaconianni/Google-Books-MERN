@@ -1,25 +1,32 @@
-const  { Schema, model } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
-//build book schema
-
+// build book schema
 const bookSchema = new Schema({
-  authors: [{
-    type: String
-  }],
+  authors: [
+    {
+      type: String,
+    },
+  ],
   description: {
     type: String,
-    required: true
+    required: true,
+  },
+  // saved book id from GoogleBooks
+  bookId: {
+    type: String,
+    required: true,
+    unique: true,
   },
   image: {
-    type: String
+    type: String,
   },
   link: {
-    type: String
+    type: String,
   },
   title: {
     type: String,
-    required: true
-  }
+    required: true,
+  },
 });
 
 const Book = model('Book', bookSchema);
